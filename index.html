@@ -3,85 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dmitry | Digital Portfolio</title>
+    <title>Dmitry | Space Portfolio</title>
     <style>
         :root {
-            --bg-color: #0f172a;
-            --card-bg: #1e293b;
-            --text-color: #cbd5e1;
-            --text-bright: #f8fafc;
-            --accent: #38bdf8;
-            --accent-hover: #0ea5e9;
+            --bg-main: #0b071e;
+            --bg-card: #160f35;
+            --border-color: #2e1f65;
+            --text-main: #d1c7eb;
+            --text-heading: #ffffff;
+            --purple-glow: #8b5cf6;
         }
 
-        * { box-sizing: border-box; transition: all 0.3s ease; }
+        * { box-sizing: border-box; transition: all 0.25s ease-in-out; }
 
         body {
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-main);
             margin: 0;
             padding: 0;
-            line-height: 1.6;
+            line-height: 1.7;
         }
 
         header {
-            text-align: center;
-            padding: 5rem 1rem 3rem 1rem;
-            background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
-            border-bottom: 1px solid #334155;
+            text-align: left;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 6rem 2rem 2rem 2rem;
         }
 
         header h1 {
-            color: var(--text-bright);
-            font-size: 3rem;
-            margin: 0 0 0.5rem 0;
-            letter-spacing: -1px;
+            color: var(--text-heading);
+            font-size: 3.5rem;
+            margin: 0;
+            font-weight: 800;
+            background: linear-gradient(45deg, #ffffff, var(--purple-glow));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         header p {
-            color: var(--accent);
-            font-size: 1.2rem;
-            font-weight: 500;
-            margin: 0;
+            color: var(--purple-glow);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 0.5rem 0 0 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
         .container {
             max-width: 900px;
             margin: 0 auto;
-            padding: 2rem 1rem;
+            padding: 0 2rem 4rem 2rem;
         }
 
         section {
-            background-color: var(--card-bg);
-            border: 1px solid #334155;
-            border-radius: 12px;
-            padding: 2rem;
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2.5rem;
             margin-bottom: 2rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         }
 
         section:hover {
-            transform: translateY(-2px);
-            border-color: var(--accent);
-            box-shadow: 0 10px 15px -3px rgba(56, 189, 248, 0.1);
+            border-color: var(--purple-glow);
+            box-shadow: 0 0 25px rgba(139, 92, 246, 0.15);
         }
 
         h2 {
-            color: var(--text-bright);
-            font-size: 1.5rem;
+            color: var(--text-heading);
+            font-size: 1.6rem;
             margin-top: 0;
             margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
         }
 
-        h2::before {
-            content: "//";
-            color: var(--accent);
-            font-weight: bold;
-        }
+        p { margin: 0 0 1rem 0; }
+        p:last-child { margin-bottom: 0; }
 
         ul {
             list-style: none;
@@ -90,91 +89,97 @@
         }
 
         li {
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.8rem;
             padding-left: 1.5rem;
             position: relative;
         }
 
+        li:last-child { margin-bottom: 0; }
+
         li::before {
-            content: "▹";
+            content: "◆";
             position: absolute;
             left: 0;
-            color: var(--accent);
+            color: var(--purple-glow);
+            font-size: 0.8rem;
+            top: 2px;
         }
 
-        /* Сетка для галереи */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
+        /* Адаптивная галерея для картинок */
+        .photo-gallery-wrapper {
             margin-top: 1.5rem;
         }
 
-        .gallery-item {
-            background: #111827;
-            border: 1px dashed #475569;
-            height: 140px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            border-radius: 8px;
-            padding: 1rem;
+        .gallery-pair {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .photo-slot-real {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            background-color: #070414;
+        }
+
+        .photo-slot-real:hover {
+            border-color: var(--purple-glow);
+            transform: scale(1.02);
+        }
+
+        .gallery-caption {
+            margin-top: 1rem;
             text-align: center;
-        }
-
-        .gallery-item span {
-            color: var(--text-bright);
-            font-weight: 600;
-            font-size: 1rem;
-            margin-bottom: 0.25rem;
-        }
-
-        .gallery-item p {
-            font-size: 0.85rem;
-            margin: 0;
-            color: #94a3b8;
-        }
-
-        .gallery-item:hover {
-            border-style: solid;
-            border-color: var(--accent);
-            background: #0f172a;
+            font-style: italic;
+            font-size: 0.95rem;
+            color: var(--purple-glow);
+            background: rgba(139, 92, 246, 0.05);
+            padding: 0.75rem;
+            border-radius: 8px;
+            border: 1px solid rgba(139, 92, 246, 0.1);
         }
 
         footer {
             text-align: center;
-            padding: 3rem 1rem;
-            font-size: 0.9rem;
-            color: #64748b;
-            border-top: 1px solid #334155;
-            margin-top: 4rem;
+            padding: 2rem;
+            font-size: 0.85rem;
+            color: #524688;
+            border-top: 1px solid var(--border-color);
+            max-width: 900px;
+            margin: 2rem auto 0 auto;
         }
 
-        footer a { color: var(--accent); text-decoration: none; }
+        @media (max-width: 600px) {
+            header h1 { font-size: 2.5rem; }
+            .gallery-pair { grid-template-columns: 1fr; }
+            .photo-slot-real { height: 200px; }
+        }
     </style>
 </head>
 <body>
 
     <header>
         <h1>Dmitry</h1>
-        <p>IITU Student & Tech Enthusiast</p>
+        <p>IITU Freshman</p>
     </header>
 
     <div class="container">
         
         <section id="about">
             <h2>About Me</h2>
-            <p>Hi, I'm Dmitry. I am 18 years old and a first-year student at IITU (International Information Technology University). I am passionate about technology, programming, and innovation.</p>
-            <p>Outside of my studies, I am a huge fan of video games, which sparked my interest in IT. I also love staying active by riding my bicycle, playing volleyball and basketball, and hiking in the mountains.</p>
+            <p>Hi, I'm Dmitry. I am 18 years old and a first-year student at IITU (International Information Technology University). I am passionate about technology and programming.</p>
+            <p>Outside of my academic life, I am a huge fan of video games, which originally sparked my interest in IT. I also love staying active by riding my bicycle, playing volleyball and basketball, going hiking in the mountains, and spending time watching YouTube videos.</p>
         </section>
 
         <section id="personality">
-            <h2>Character & Appearance</h2>
+            <h2>Character</h2>
+            <p>I would describe my personality through a few core traits:</p>
             <ul>
-                <li><strong>Traits:</strong> Friendly, humble, easy-going, and occasionally a bit lazy with routine tasks.</li>
-                <li><strong>Look:</strong> 1.7 meters tall, slim build, brunette with slightly curly hair, and I wear glasses.</li>
-                <li><strong>Style:</strong> I prefer a comfortable, casual clothing style that fits the university vibe.</li>
+                <li><strong>Humble & Friendly:</strong> I am an easy-going person who genuinely enjoys connecting and interacting with people.</li>
+                <li><strong>Relaxed Approach:</strong> While I am focused on my main goals, I can occasionally be a bit lazy when it comes to routine daily tasks.</li>
             </ul>
         </section>
 
@@ -185,22 +190,13 @@
 
         <section id="gallery">
             <h2>Photo Gallery</h2>
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <span>Terra Meadow</span>
-                    <p>Hiking through the rain and mud with classmates.</p>
+            <div class="photo-gallery-wrapper">
+                <div class="gallery-pair">
+                    <img src="gory1.jpeg" alt="Ascending Terra Meadow" class="photo-slot-real">
+                    <img src="gory2.jpeg" alt="Descending Terra Meadow" class="photo-slot-real">
                 </div>
-                <div class="gallery-item">
-                    <span>Bicycle Ride</span>
-                    <p>Exploring nature trails on my bike.</p>
-                </div>
-                <div class="gallery-item">
-                    <span>Sports Time</span>
-                    <p>Playing volleyball and basketball with friends.</p>
-                </div>
-                <div class="gallery-item">
-                    <span>IITU Life</span>
-                    <p>My current university setup and student vibes.</p>
+                <div class="gallery-caption">
+                    These are the mountains I captured while ascending and descending during our trip to Terra Meadow.
                 </div>
             </div>
         </section>
@@ -218,8 +214,7 @@
             <h2>How AI Helped Me</h2>
             <ul>
                 <li><strong>Tool Used:</strong> Google Gemini.</li>
-                <li><strong>Tasks:</strong> Translating Russian terms, refining vocabulary, and structuring paragraph layouts.</li>
-                <li><strong>Edits:</strong> Personalizing the content with my hiking memories and future European dreams.</li>
+                <li><strong>Tasks:</strong> Organizing layout, drafting content, and structuring paragraph layouts.</li>
                 <li><strong>Advantages:</strong> Saves time, fixes grammar, and provides good sentence variety.</li>
                 <li><strong>Disadvantages:</strong> Lacks real emotion and requires manual fact-checking.</li>
             </ul>
@@ -228,8 +223,12 @@
     </div>
 
     <footer>
-        <p>&copy; 2026 Dmitry. Built for IITU Project. Hosted on <a href="https://pages.github.com/" target="_blank">GitHub Pages</a></p>
+        <p>&copy; 2026 Dmitry. IITU Web Project.</p>
     </footer>
+
+</body>
+</html>
+
 
 </body>
 </html>
